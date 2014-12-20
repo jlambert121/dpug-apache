@@ -1,0 +1,13 @@
+{
+  "name": "dpug-apache",
+  "version": "0.1.0",
+  "author": "dpug",
+  "summary": "Manage apache and serve up HTML files",
+  "license": "Apache 2.0",
+  "source": "https://github.com/jlambert121/dpug-apache",
+  "project_page": "https://github.com/jlambert121/dpug-apache",
+  "issues_url": "https://github.com/jlambert121/dpug-apache/issues",
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">=3.2.0 <5.0.0" }
+  ]
+}
