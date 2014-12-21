@@ -1,7 +1,17 @@
 require 'spec_helper'
 
-describe 'apache::install' do
+describe 'apache' do
 
-  it { should contain_package('httpd') }
+  context 'RedHat' do
+    let(:facts) { { :osfamily => 'RedHat' } }
+    it { should contain_package('httpd') }
+  end
+
+  context 'Ubuntu' do
+    let(:facts) { { :osfamily => 'Debian' } }
+    it { should contain_package('apache2') }
+  end
+
+
 
 end

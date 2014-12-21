@@ -24,7 +24,7 @@ RSpec.configure do |c|
     hosts.each do |host|
       # Install module and dependencies
       copy_module_to(host, :source => proj_root, :module_name => 'apache')
-#      on host, puppet('module', 'install', 'puppetlabs-stdlib'), { :acceptable_exit_codes => [0,1] }
+      on host, puppet('module', 'install', 'puppetlabs-stdlib'), { :acceptable_exit_codes => [0,1] }
     end
   end
 end
