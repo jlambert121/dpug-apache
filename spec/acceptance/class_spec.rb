@@ -7,6 +7,7 @@ describe 'apache class' do
     it 'should work idempotently with no errors' do
       pp = <<-EOS
       class { 'apache': }
+      apache::html_file { 'mypage.html': source => 'puppet:///modules/apache/mypage.html' }
       EOS
 
       # Run it twice and test for idempotency
@@ -14,13 +15,18 @@ describe 'apache class' do
       apply_manifest(pp, :catch_changes  => true)
     end
 
-    describe package('apache') do
+    describe package('httpd') do
       it { is_expected.to be_installed }
     end
 
-    describe service('apache') do
+    describe service('httpd') do
       it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
+
+    describe command('/usr/bin/curl http://localhost:80/mypage.html') do
+      its(:stdout) { should match /test page/ }
+    end
+
   end
 end
