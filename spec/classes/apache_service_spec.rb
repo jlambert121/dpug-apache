@@ -1,5 +1,7 @@
 require 'spec_helper'
 
-describe 'apache' do
+describe 'apache::service' do
+
+  it { should contain_service('httpd').with(:ensure => 'running', :enable => true) }
 
 end
